@@ -34,6 +34,7 @@ while exit == False:
                 addbook.update({book_name : value})
                 print(book_name, "is added!") 
             return addbook
+        
     def search_book(searchbook):
         if(Input == 2):
             Input_1 = input("Enter the name of book to search: ")
@@ -44,10 +45,27 @@ while exit == False:
                 print()
             return searchbook
 
+    def issue_book(issue):
+        if(Input == 3):
+            Input_2 = input("Enter the name of book to issue: ")
+            if(Input_2 in issue):
+                books_issue.append(Input_2)
+                issue.pop(Input_2)
+                print(Input_2,"is issued!")
+                print()
+            else:
+                print(Input_2,"is not available!")
+                print()
+            return issue 
+
     if(Input == 1):
         modules = add_book(modules)
         print()
 
     elif(Input == 2):
         modules = search_book(modules)
+        print()
+
+    elif(Input == 3):
+        modules = issue_book(modules)
         print()
