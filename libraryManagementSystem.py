@@ -48,8 +48,6 @@ while exit == False:
         modules = add_book(modules)
         print()
 
-    def issued_book(issue):
-        if(Input == 6):
-            for i in issue:
-                print(i)
-
+    elif(Input == 2):
+        modules = search_book(modules)
+        print()
