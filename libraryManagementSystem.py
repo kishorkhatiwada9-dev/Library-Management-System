@@ -58,6 +58,18 @@ while exit == False:
                 print()
             return issue 
 
+    def return_book(returnbook):
+        if(Input == 4):
+            Input_3 = input("Enter the book you want to return: ")
+            if(Input_3 in returnbook):
+                value_1 = "Available"
+                books_issue.remove(Input_3)
+                modules.update({Input_3 : value_1})
+            else:
+                print("The book doesn't belong to this Libarary!")
+            
+            return returnbook
+
     if(Input == 1):
         modules = add_book(modules)
         print()
@@ -69,3 +81,6 @@ while exit == False:
     elif(Input == 3):
         modules = issue_book(modules)
         print()
+
+    elif(Input == 4):
+        return_book(books_issue)
