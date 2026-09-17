@@ -17,58 +17,72 @@ exit = False
 
 books_issue = []
 
-while exit == False:
-    Input = int(input("Enter your choice: "))
+def add_book(addbook):
+    
+    book_name = input("Enter book name to add: ")
+    if (book_name in addbook):
+        print("Already available!")
 
-    def add_book(addbook):
-        if(Input == 1):
-            book_name = input("Enter book name to add: ")
-            if (book_name in addbook):
-                print("Already available!")
-
-            elif(book_name in books_issue):
-                print(book_name,"is issued!")
+    elif(book_name in books_issue):
+        print(book_name,"is issued!")
                 
-            else:
-                value = "Available"
-                addbook.update({book_name : value})
-                print(book_name, "is added!") 
-            return addbook
+    else:
+        value = "Available"
+        addbook.update({book_name : value})
+        print(book_name, "is added!") 
+    return addbook
         
-    def search_book(searchbook):
-        if(Input == 2):
-            Input_1 = input("Enter the name of book to search: ")
-            if (Input_1 in searchbook):
-                print(Input_1,"is available!")
-            else:
-                print(Input_1,"is not available!")
-                print()
-            return searchbook
+def search_book(searchbook):
+    
+    Input_1 = input("Enter the name of book to search: ")
+    if (Input_1 in searchbook):
+        print(Input_1,"is available!")
+    else:
+        print(Input_1,"is not available!")
+        print()
+    return searchbook
 
-    def issue_book(issue):
-        if(Input == 3):
-            Input_2 = input("Enter the name of book to issue: ")
-            if(Input_2 in issue):
-                books_issue.append(Input_2)
-                issue.pop(Input_2)
-                print(Input_2,"is issued!")
-                print()
-            else:
-                print(Input_2,"is not available!")
-                print()
-            return issue 
+def issue_book(issue):
+    
+    Input_2 = input("Enter the name of book to issue: ")
+    if(Input_2 in issue):
+        books_issue.append(Input_2)
+        issue.pop(Input_2)
+        print(Input_2,"is issued!")
+        print()
+    else:
+        print(Input_2,"is not available!")
+        print()
+    return issue 
 
-    def return_book(returnbook):
-        if(Input == 4):
-            Input_3 = input("Enter the book you want to return: ")
-            if(Input_3 in returnbook):
-                value_1 = "Available"
-                books_issue.remove(Input_3)
-                modules.update({Input_3 : value_1})
-            else:
-                print("The book doesn't belong to this Libarary!")
+def return_book(returnbook):
+
+    Input_3 = input("Enter the book you want to return: ")
+    if(Input_3 in returnbook):
+        value_1 = "Available"
+        returnbook.remove(Input_3)
+        modules.update({Input_3 : value_1})
+        print("The book is returned back to the library!")
+    else:
+        print("The book doesn't belong to this Libarary!")
             
-            return returnbook
+    return returnbook
+
+def show_book(show):
+    for key in show:
+        print(key)
+
+def issued_book(issue):
+    if(Input == 6):
+        if(len(issue) == 0):
+             print("No books issued!")
+        else:
+             for i in issue:
+                  print(i)
+
+while exit == False:
+
+    Input = int(input("Enter your choice: "))
 
     if(Input == 1):
         modules = add_book(modules)
@@ -84,3 +98,18 @@ while exit == False:
 
     elif(Input == 4):
         return_book(books_issue)
+
+    elif(Input == 5):
+        show_book(modules)
+
+    elif(Input == 6):
+        issued_book(books_issue)
+
+    elif(Input == 7):
+        print("Thank you!")
+        exit = True
+
+    else:
+        print("Invalid input!")
+        print()
+        
